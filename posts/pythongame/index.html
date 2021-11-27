@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.5.1"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="Pythongame" /><meta name="author" content="바라미" /><meta property="og:locale" content="en_US" /><meta name="description" content="파이썬을 이용해서 간단하고 쉬운 게임 만들어보기" /><meta property="og:description" content="파이썬을 이용해서 간단하고 쉬운 게임 만들어보기" /><link rel="canonical" href="https://hyu-barami.github.io/posts/pythongame/" /><meta property="og:url" content="https://hyu-barami.github.io/posts/pythongame/" /><meta property="og:site_name" content="Barami" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-26T00:00:00+09:00" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"파이썬을 이용해서 간단하고 쉬운 게임 만들어보기","@type":"BlogPosting","url":"https://hyu-barami.github.io/posts/pythongame/","headline":"Pythongame","datePublished":"2021-11-26T00:00:00+09:00","dateModified":"2021-11-26T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://hyu-barami.github.io/posts/pythongame/"},"author":{"@type":"Person","name":"바라미"},"@context":"https://schema.org"}</script><title>Pythongame | Barami</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon.ico"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/favicon.ico"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" href="/assets/css/barami.css" as="style"><link rel="stylesheet" href="/assets/css/barami.css"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/barami.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Barami</a></div><div class="site-subtitle font-italic">한양대학교 학술동아리 바라미</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/ibarami" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>Pythongame</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Pythongame</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Nov 26, 2021, 12:00 AM +0900" > Nov 26 <i class="unloaded">2021-11-26T00:00:00+09:00</i> </span> by <span class="author"> 바라미 </span></div><div> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sat, Nov 27, 2021, 2:13 AM +0900" > Nov 27 <i class="unloaded">2021-11-27T02:13:57+09:00</i> </span></div></div><div class="post-content"><h3 id="파이썬을-이용해서-간단하고-쉬운-게임-만들어보기">파이썬을 이용해서 간단하고 쉬운 게임 만들어보기</h3><h2 id="작품-소개">작품 소개</h2><p>: 1학년 2학기, 공학도를 위한 창의적 컴퓨팅이라는 강의를 들으면서 파이썬이라는 컴퓨팅 언어를 배웠는데, 이를 이용해서 각종 복잡한 활동들을 할 수 있으며 게임도 만들어낼 수 있다는 교수님의 말씀을 들었다. 예전부터 게임에 관심도 많고 좋아하기도 했으며, 실제 파이썬을 통해 게임을 만들었을 때, 내가 배운 내용이 실제로 사용되는지 궁금해서 한 번 파이썬을 이용해서 게임을 만들어보았다. 이 코드는 유튜브 “초보 코딩”이라는 채널, 이수안 컴퓨터 연구소에서 배포한 pyshooting이라는 pdf 파일, 저서 “혼자 공부하는 파이썬”, 강의 시간에 배운 내용으로 Anaconda3의 jupiter notbook을 통해 제작했다. 그리고 과거에 내가 했던 드래곤 플라이트라는 게임을 모티브로 삼아서 이를 비슷하게 만들어보고 싶었다.</p><h2 id="기존-목표">기존 목표</h2><p>: 플레이어가 조종하는 드래곤 형태의 캐릭터를 화살표 상, 하, 좌, 우를 이용해서 움직이고 스페이스 바를 눌러서 불을 뿜게 마시며 위에서부터 아래로 적들이 출몰하고 적과 충돌하면 게임 오버되게 만드는 것이 기본적인 게임의 구조이다. 거기다가 시간, 점수, 놓친 적의 숫자, 좌우에서부터 발사되는 장애물, 획득 시 몇 가지 좋은 효과를 내는 소모성 효과를 지닌 것과 나쁜 효과를 내는 소모성 효과를 지닌 것이 드문 확률로 맵 어딘가에 등장하게 만들어보는 것</p><h2 id="결과">결과</h2><p>: 코드</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+</pre><td class="rouge-code"><pre>import pygame
+import random
+import time
+from datetime import datetime
+
+# 1. 게임 초기화
+pygame.init()
+
+# 2. 게임창 옵션 설정
+size = [400, 800]
+screen = pygame.display.set_mode(size)
+
+title = "Dragon Flight"
+pygame.display.set_caption(title)
+
+# 3. 게임 내 필요한 설정
+clock = pygame.time.Clock()
+
+class obj:
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        self.mobe = 0
+    def put_img(self, address):
+        if address[-3:] == "png":
+            self.img = pygame.image.load(address).convert_alpha()
+        else :
+            self.img = pygame.image.load(address)
+        self.sx, self.sy = self.img.get_size()
+    def change_size(self, sx, sy):
+        self.img = pygame.transform.scale(self.img, (sx, sy))
+        self.sx, self.sy = self.img.get_size()
+    def show(self):
+        screen.blit(self.img, (self.x,self.y))
+
+# a.x-b.sx &lt;= b.x &lt;= a.x+a.sx
+# a.y-b.sy &lt;= b.y &lt;= a.y+a.sy
+
+def crash(a, b):
+    if (a.x-b.sx &lt;= b.x) and (b.x &lt;= a.x+a.sx):
+        if (a.y-b.sy &lt;= b.y) and (b.y &lt;= a.y+a.sy):
+            return True
+        else:
+            return False
+    else:
+        return False
+        
+ss = obj()
+ss.put_img("C:/Python39/images/ss.png")
+ss.change_size(60,80)
+ss.x = round(size[0]/2- ss.sx/2)
+ss.y = size[1] -ss.sy -100
+ss.move = 6     
+
+left_go = False
+right_go = False
+up_go = False
+down_go = False
+space_go = False
+
+m_list = []
+a_list = []
+
+black = (0,0,0)
+white = (255,255,255)
+k = 0
+
+kill = 0
+loss = 0
+
+#4-0. 게임 시작 대기 화면
+SB = 0
+while SB == 0:
+    clock.tick(60)
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                SB = 1
+    screen.fill(black)
+    font = pygame.font.Font("C:/Python39/Fonts/나눔 글꼴/나눔고딕/NanumGothic.otf", 15)
+    text = font.render("PRESS SPACE KEY TO START", True, (255,255,255))
+    screen.blit(text, (40, size[1]/2-50))
+    pygame.display.flip()
+        
+    
+
+# 4. 메인 이벤트
+start_time = datetime.now()
+SB = 0
+while SB == 0:
+
+    # 4-1. FPS 설정
+    clock.tick(60)
+
+    # 4-2. 각종 입력 감지
+    # ss: 인물 키보드 입력 상하좌우 이동
+    # ss1: 던져지는 교재 마우스 클릭, 마우스 위치
+    # ss2: 과제 빌런 랜덤 발생 랜덤 일자 이동
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            SB = 1
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                left_go = True
+            elif event.key == pygame.K_RIGHT:
+                right_go = True
+            elif event.key == pygame.K_UP:
+                up_go = True
+            elif event.key == pygame.K_DOWN:
+                down_go = True
+            elif event.key == pygame.K_SPACE:
+                space_go = True   
+                k = 0
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                left_go = False
+            elif event.key == pygame.K_RIGHT:
+                right_go = False
+            elif event.key == pygame.K_UP:
+                up_go = False
+            elif event.key == pygame.K_DOWN:
+                down_go = False
+            elif event.key == pygame.K_SPACE:
+                space_go = False    
+                
+
+    # 4-3. 입력, 시간에 따른 변화
+    now_time = datetime.now()
+    delta_time = (now_time - start_time).total_seconds()
+    
+    if left_go == True:
+        ss.x -= ss.move
+        if ss.x &lt;= 0:
+            ss.x = 0
+    elif right_go == True:
+        ss.x += ss.move
+        if ss.x &gt;= size[0] - ss.sx:
+            ss.x = size[0] - ss.sx
+    elif up_go == True:
+        ss.y -= ss.move
+        if ss.y &lt;= 0:
+            ss.y = 0
+    elif down_go == True:
+        ss.y += ss.move
+        if ss.y &gt;= size[0] + 3*ss.sy -10:
+            ss.y = size[0] + 3*ss.sy -10
+               
+    if space_go == True and k % 6 == 0:
+        mm = obj()
+        mm.put_img("C:/Python39/images/mm.png")
+        mm.change_size(30,30)
+        mm.x = round(ss.x + ss.sx/2 - mm.sx/2)
+        mm.y = ss.y - mm.sy
+        mm.move = 15
+        m_list.append(mm)
+    k += 1    
+    d_list = []
+    for i in range(len(m_list)):
+        m = m_list[i]
+        m.y-= m.move
+        if m.y &lt;= -m.sy:
+            d_list.append(i)
+    for d in d_list:
+        del m_list[d]
+
+    if random.random() &gt; 0.98 : 
+        aa = obj()
+        aa.put_img("C:/Python39/images/aa.png")
+        aa.change_size(60,80)
+        aa.x = random.randrange(0, size[0]-aa.sx-round(ss.sx/2))
+        aa.y = 10
+        aa.move = 3
+        a_list.append(aa)
+    d_list = []
+    for i in range(len(a_list)):
+        a = a_list[i]
+        a.y += a.move
+        if a.y &gt;= size[1]:
+            d_list.append(i)
+    for d in d_list:
+        del a_list[d]
+        loss += 1
+            
+    dm_list = []
+    da_list = []
+    for i in range(len(m_list)):
+        for j in range(len(a_list)):
+            m = m_list[i]
+            a = a_list[j]
+            if crash(m,a) == True:
+                dm_list.append(i)
+                da_list.append(j)
+    dm_list = list(set(dm_list))
+    da_list = list(set(da_list))
+
+    for dm in dm_list:
+        del m_list[dm]
+    for da in da_list:
+        del a_list[da]
+        kill += 1
+        
+    for i in range(len(a_list)):
+        a = a_list[i]
+        if crash(a, ss) == True:
+            SB = 1
+            GO = 1
+    
+    # 4-4. 그리기
+    screen.fill(black)
+    ss.show()
+    for m in m_list:
+        m.show()
+    for a in a_list:
+        a.show()
+        
+    font = pygame.font.Font("C:/Python39/Fonts/나눔 글꼴/나눔고딕/NanumGothic.otf", 20)
+    text_kill = font.render("killed: {}, loss: {}".format(kill, loss), True, (0,255,0))
+    screen.blit(text_kill, (10, 5))
+    
+    text_time = font.render("time : {}".format(delta_time), True, (255,255,255))
+    screen.blit(text_time, (size[0]-100, 5))
+    
+    # 4-5. 업데이트
+    pygame.display.flip()
+
+# 5. 게임 종료
+while GO == 1:
+    clock.tick(60)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            GO = 0
+    font = pygame.font.Font("C:/Python39/Fonts/나눔 글꼴/나눔고딕/NanumGothic.otf", 15)
+    text = font.render("GAME OVER", True, (255,0,0))
+    screen.blit(text, (80, size[1]/2-50))
+    pygame.display.flip()
+pygame.quit() 
+</pre></table></code></div></div><p>이미지:</p><h2 id="개선해야-할-점">개선해야 할 점</h2><p>: 기본적인 구조는 내가 처음에 구상한 것처럼 만들 수 있었고, 시간, 점수, 놓친 횟수 같은 것은 구현했지만 내가 창의적으로 만들어냈다기 보다는 유튜브, 책 등의 도움을 많이 받으며 이를 거의 따라 만든 것과 다를 바가 없다. 캐릭터를 움직이게 하거나 게임을 시작하고 종료할 때 등장하는 텍스트 등, 그리고 일부 내용들은 내가 배운 내용을 응용해서 제작해보았다. 또한 내가 처음에 추가하고자 했던 랜덤성 아이템의 등장과 추가적인 장애물의 기능은 추가하지 못했으며 플레이어 캐릭터가 발사하는 불덩이 파일에서 하얀 부분을 없애는 방법을 적용하지 못해서 발사체가 조금 이상하다. 그리고 텍스트가 화면의 중간보다 살짝 치우쳐진 곳에 출력되게 되었고, 적들에게 플레이어가 충돌하는 범위가 캐릭터의 크기보다 살짝 더 커서 충돌 판정이 굉장히 애매하고 확실하지 않았다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Pythongame - Barami&url=https://hyu-barami.github.io/posts/pythongame/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Pythongame - Barami&u=https://hyu-barami.github.io/posts/pythongame/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Pythongame - Barami&url=https://hyu-barami.github.io/posts/pythongame/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/portable_braille_voice_translator/">휴대용 점자 음성 번역기</a><li><a href="/posts/GPS-L1-MSA/">빔폭 향상을 위한 모드합성 안테나</a><li><a href="/posts/endurance_drone/">곤충 시각 기관 모방 센서와 인공신경망을 적용한 실내 드론 시스템</a><li><a href="/posts/pythongame/">Pythongame</a><li><a href="/posts/Detachable-lost-and-found-system/">탈부착형 분실물 찾기 시스템</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/post/">post</a> <a class="post-tag" href="/tags/shinhyun/">shinhyun</a> <a class="post-tag" href="/tags/hwanghyeonjo/">hwanghyeonjo</a> <a class="post-tag" href="/tags/opencv/">opencv</a> <a class="post-tag" href="/tags/ahndongkun/">ahndongkun</a> <a class="post-tag" href="/tags/ai/">ai</a> <a class="post-tag" href="/tags/analog-circuit/">analog circuit</a> <a class="post-tag" href="/tags/arduino/">arduino</a> <a class="post-tag" href="/tags/arm/">arm</a> <a class="post-tag" href="/tags/blynk/">blynk</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div><div class="custom-panel"><div class="custom-panel-title"> 2021년 바라미 전시회</div><div class="custom-panel-content"> <a href="/categories/2021년"> ❯ 작품 목록 보기</a></div><div class="custom-panel-content"> <a herf="#"> ❯ 방명록 작성하기 (12월 1일 자정부터 링크 열립니다.)</a></div></div><div class="custom-panel"><div class="custom-panel-title"> 바라미 후원하기</div><div class="custom-panel-content"> 신한은행 100-028-832805 바라미</div></div><div class="custom-panel"><div class="custom-panel-title"> 역대 전시회 목록</div><div class="custom-panel-content"> <a href="/categories/2021년"> ❯ 2021년 전시회</a></div><div class="custom-panel-content"> <a href="/categories/2020년"> ❯ 2020년 전시회</a></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/endurance_drone/"><div class="card-body"> <span class="timeago small" > Nov 27 <i class="unloaded">2021-11-27T01:15:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>곤충 시각 기관 모방 센서와 인공신경망을 적용한 실내 드론 시스템</h3><div class="text-muted small"><p> 곤충 시각 기관 모방 센서와 인공신경망을 적용한 실내 드론 시스템 작성중인 초안입니다!! 연구 동기 4차 산업혁명 시대에 드론은 기존 산업과 유기적으로 접목되어 사람을 대신하는 경우가 많아지고 있습니다. 예를 들어, 재난현장에서는 사람이 직접 들어갈 수 없는 건물 내부를 수색하는 역할을 해내고 있습니다. 이를 위해서는 비좁은 실내에서도 자유롭게 ...</p></div></div></a></div><div class="card"> <a href="/posts/VirtualTrainer/"><div class="card-body"> <span class="timeago small" > Nov 27 <i class="unloaded">2021-11-27T01:10:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Virtual Trainer</h3><div class="text-muted small"><p> Virtual Trainer 작품 개요 운동을 도와주는 사람 없이도 도움을 받고 싶었다. 대표적으로 내가 제대로 자세를 잡고 있는지 궁금했다. 작품 설명 AWS에서 GPU 가상 컴퓨터를 구매해 streamlit 서버를 운영.(https://chosangnimiswatching.com) 사용자가 카메라를 켜서 운동을 하면 컴퓨터에서 관절 ...</p></div></div></a></div><div class="card"> <a href="/posts/portable_braille_voice_translator/"><div class="card-body"> <span class="timeago small" > Nov 27 <i class="unloaded">2021-11-27T00:35:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>휴대용 점자 음성 번역기</h3><div class="text-muted small"><p> 휴대용 점자 음성번역기 프로젝트 목적 및 배경 사회적 약자의 불편한 점에 공감하여 프로젝트를 진행할 것을 계획하던 중, 시각장애인의 점자 문맹률이 높다는 사실을 접했다. 선진국의 경우 약 90%, 개발도상국의 경우 85% 정도의 점자문맹률이 나타난다. 교육시절도 부족하여, 시각장애인들이 점자를 배우는 것은 ‘ 또 다른 눈을 뜨는 것’이라 할 정도로...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/camera-calibration/" class="btn btn-outline-primary"><p>카메라 캘리브레이션</p></a> <a href="/posts/selfparking_car/" class="btn btn-outline-primary"><p>아두이노 RC카 자동주차 시스템</p></a></div><script src="https://utteranc.es/client.js" repo="hyu-barami/hyu-blog-comment" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async> </script></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ibarami">Barami</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/post/">post</a> <a class="post-tag" href="/tags/shinhyun/">shinhyun</a> <a class="post-tag" href="/tags/hwanghyeonjo/">hwanghyeonjo</a> <a class="post-tag" href="/tags/opencv/">opencv</a> <a class="post-tag" href="/tags/ahndongkun/">ahndongkun</a> <a class="post-tag" href="/tags/ai/">ai</a> <a class="post-tag" href="/tags/analog-circuit/">analog circuit</a> <a class="post-tag" href="/tags/arduino/">arduino</a> <a class="post-tag" href="/tags/arm/">arm</a> <a class="post-tag" href="/tags/blynk/">blynk</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://hyu-barami.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>

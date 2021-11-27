@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.5.1"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="아두이노 RC카 자동주차 시스템" /><meta name="author" content="Kim Seunghwan" /><meta property="og:locale" content="en_US" /><meta name="description" content="목표 아두이노를 이용해 무선으로 조종 가능한 RC카를 만들고 빈 공간을 감지하여 자동으로 주차하는 기능을 개발한다." /><meta property="og:description" content="목표 아두이노를 이용해 무선으로 조종 가능한 RC카를 만들고 빈 공간을 감지하여 자동으로 주차하는 기능을 개발한다." /><link rel="canonical" href="https://hyu-barami.github.io/posts/selfparking_car/" /><meta property="og:url" content="https://hyu-barami.github.io/posts/selfparking_car/" /><meta property="og:site_name" content="Barami" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-26T09:30:00+09:00" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"목표 아두이노를 이용해 무선으로 조종 가능한 RC카를 만들고 빈 공간을 감지하여 자동으로 주차하는 기능을 개발한다.","@type":"BlogPosting","url":"https://hyu-barami.github.io/posts/selfparking_car/","headline":"아두이노 RC카 자동주차 시스템","datePublished":"2021-11-26T09:30:00+09:00","dateModified":"2021-11-26T09:30:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://hyu-barami.github.io/posts/selfparking_car/"},"author":{"@type":"Person","name":"Kim Seunghwan"},"@context":"https://schema.org"}</script><title>아두이노 RC카 자동주차 시스템 | Barami</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon.ico"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/favicon.ico"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" href="/assets/css/barami.css" as="style"><link rel="stylesheet" href="/assets/css/barami.css"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/barami.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Barami</a></div><div class="site-subtitle font-italic">한양대학교 학술동아리 바라미</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/ibarami" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>아두이노 RC카 자동주차 시스템</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>아두이노 RC카 자동주차 시스템</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Nov 26, 2021, 9:30 AM +0900" > Nov 26 <i class="unloaded">2021-11-26T09:30:00+09:00</i> </span> by <span class="author"> Kim Seunghwan </span></div></div><div class="post-content"><hr /><h1 id="목표">목표</h1><p>아두이노를 이용해 무선으로 조종 가능한 RC카를 만들고 빈 공간을 감지하여 자동으로 주차하는 기능을 개발한다.</p><hr /><h1 id="작품설명">작품설명</h1><p>RC카는 스키드 조향 방식으로 움직이며, 블루투스 모듈을 이용해 스마트폰 앱으로 조종할 수 있다. 자동주차 기능은 스마트폰이나 RC카에 설치한 스위치를 통해 켤 수 있으며, 자동주차 기능이 작동하는 동안에 공간을 찾아 움직이다가 차체에 부착된 초음파 센서들을 이용해 주차를 할 수 있는 공간이 감지되면 주차를 하도록 만들었다.</p><hr /><h1 id="주요-부품-도구">주요 부품, 도구</h1><ul><li>PC 및 스마트폰<li>아두이노 UNO 보드<li>센서확장 쉴드<li>usb케이블<li>블루투스 모듈 HM-10<li>차량 프레임, 바퀴<li>초음파 센서<li>브레드보드<li>tact 스위치<li>LED<li>DC모터 드라이버<li>배터리 및 배터리 홀더<li>RC카 제어 어플 어플은 직접 만들지 않고 구글 플레이 스토어에 등록되어 있는 어플을 받아 사용했다.</ul><hr /><h1 id="주요-코드">주요 코드</h1><p>전체 코드 중, 주차와 관련된 핵심 코드는 아래와 같다.</p><div class="language-cpp highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+</pre><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">aaa</span><span class="p">(){</span>
+  <span class="n">ck</span><span class="o">=</span><span class="n">ck</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">((</span><span class="n">ck</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="n">LOW</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">bluetooth</span><span class="p">.</span><span class="n">available</span><span class="p">()){</span>      
+    <span class="kt">char</span> <span class="n">Blue_Val</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> 
+    <span class="n">control_SmartCar</span><span class="p">(</span><span class="n">Blue_Val</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+      <span class="n">motor_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+      <span class="n">Right_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">){</span>
+      <span class="n">Left_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">4</span><span class="p">){</span>
+      <span class="n">left_rotation</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
+      <span class="n">right_rotation</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+      <span class="n">analogWrite</span><span class="p">(</span><span class="n">RightMotor_E_pin</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">analogWrite</span><span class="p">(</span><span class="n">LeftMotor_E_pin</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>   
+  <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span><span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="n">HIGH</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="n">duration1</span><span class="p">,</span> <span class="n">RS1</span><span class="p">;</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin1</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin1</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">duration1</span> <span class="o">=</span> <span class="n">pulseIn</span><span class="p">(</span><span class="n">echoPin1</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">RS1</span> <span class="o">=</span> <span class="p">((</span><span class="kt">float</span><span class="p">)(</span><span class="mi">340</span> <span class="o">*</span> <span class="n">duration1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> 
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">RS1</span><span class="o">&gt;</span><span class="mi">25</span><span class="p">)){</span>
+      <span class="n">stopp</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">filteredValue1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+      <span class="kt">long</span> <span class="n">duration2</span><span class="p">,</span> <span class="n">RS2</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">30</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin2</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin2</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+        <span class="n">duration2</span> <span class="o">=</span> <span class="n">pulseIn</span><span class="p">(</span><span class="n">echoPin2</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+        <span class="n">RS2</span> <span class="o">=</span> <span class="p">((</span><span class="kt">float</span><span class="p">)(</span><span class="mi">340</span> <span class="o">*</span> <span class="n">duration2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> 
+        <span class="k">if</span><span class="p">((</span><span class="n">RS2</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">70</span><span class="p">){</span>
+          <span class="n">RS2</span><span class="o">=</span><span class="n">filteredValue1</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">RS2</span><span class="p">);</span>
+        <span class="n">filteredValue1</span> <span class="o">+=</span> <span class="n">RS2</span><span class="p">;</span>
+        <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="n">filteredValue1</span> <span class="o">/=</span><span class="mi">30</span><span class="p">;</span>
+      
+      <span class="k">if</span> <span class="p">((</span><span class="n">filteredValue1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">){</span>
+      <span class="n">stopp</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+      <span class="n">left_rotation</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">530</span><span class="p">);</span>
+      <span class="n">stopp</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+      <span class="kt">int</span> <span class="n">filteredValue2</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="kt">long</span> <span class="n">duration3</span><span class="p">,</span> <span class="n">RS3</span><span class="p">;</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin3</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">trigPin3</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+      <span class="n">duration3</span> <span class="o">=</span> <span class="n">pulseIn</span><span class="p">(</span><span class="n">echoPin1</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+      <span class="n">RS3</span> <span class="o">=</span> <span class="p">((</span><span class="kt">float</span><span class="p">)(</span><span class="mi">340</span> <span class="o">*</span> <span class="n">duration1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> 
+      <span class="n">filteredValue2</span> <span class="o">+=</span> <span class="n">RS3</span><span class="p">;</span>
+      <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">filteredValue2</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+      
+      <span class="n">R_Motor</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">;</span> 
+      <span class="n">L_Motor</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">;</span>
+      <span class="n">motor_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+      <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">filteredValue2</span><span class="o">*</span><span class="mi">18</span><span class="p">;</span>
+      <span class="n">delay</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+      <span class="n">stopp</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span><span class="n">L_Motor</span><span class="p">);</span>
+        <span class="n">ck</span><span class="o">=</span><span class="n">ck</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+      <span class="n">R_Motor</span> <span class="o">=</span> <span class="n">HIGH</span><span class="p">;</span> 
+      <span class="n">L_Motor</span> <span class="o">=</span> <span class="n">HIGH</span><span class="p">;</span>
+      <span class="n">motor_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+      <span class="n">R_Motor</span> <span class="o">=</span> <span class="n">HIGH</span><span class="p">;</span> 
+      <span class="n">L_Motor</span> <span class="o">=</span> <span class="n">HIGH</span><span class="p">;</span>
+      <span class="n">motor_role</span><span class="p">(</span><span class="n">R_Motor</span><span class="p">,</span> <span class="n">L_Motor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><hr /><h1 id="시연-영상">시연 영상</h1><ol><li>블루투스 원격 제어</ol><video controls="" width="90%"> <source src="/assets/img/post/2021-11-26-selfparking_car/1.mp4" /> </video><ol><li>어플을 통해 자동주차 기능을 작동</ol><video controls="" width="90%"> <source src="/assets/img/post/2021-11-26-selfparking_car/2.mp4" /> </video><ol><li>빈 공간이 감지되어도 주차 공간으로 충분하지 않을 경우 다른 주차공간을 찾도록 설계함</ol><video controls="" width="90%"> <source src="/assets/img/post/2021-11-26-selfparking_car/3.mp4" /> </video><ol><li>차체에 부착된 스위치를 통해 자동주차 기능을 작동</ol><video controls="" width="90%"> <source src="/assets/img/post/2021-11-26-selfparking_car/4.mp4" /> </video><ol><li>종합 시연 영상</ol><video controls="" width="90%"> <source src="/assets/img/post/2021-11-26-selfparking_car/5.mp4" /> </video><hr /><h1 id="문제점-개선방향">문제점, 개선방향</h1><p>프로젝트를 진행하면서 여러 문제점이 발생했는데 정리하면 아래와 같다.</p><ul><li>경로 이탈 문제 : RC카가 오래 작동할 경우 한쪽으로 치우치며 움직이거나 원하는 경로에서 조금씩 벗어나는 문제점이 발생했다. 원인은 크게 2가지로 보았는데 사용한 RC카 프레임이 다소 견고한 편이 아니다 보니 모터의 위치가 조금씩 흔들렸고, 모터의 회전 수도 좌우에서 차이가 조금 났었다.<li>배터리 전압 문제 : 배터리의 전압이 약해질수록 모터의 회전 강도가 약해지다 보니 수 차례 테스트를 거치는 동안 RC카의 움직임이 조금씩 둔해지는 결과가 나왔다. 새 배터리로 갈아줌으로써 당장은 문제를 해결할 수 있었지만 장기적으로 봤을 때, 다른 방식으로 개선해야 할 필요성을 느꼈다.<li>센서의 정보 처리 속도 : 처음에는 여러 개의 센서 값을 한 번에 받으려고 했으나 너무 반응이 느려진 탓에 RC카의 반응이 너무 늦었다. 이러한 문제를 해결하기 위해 센서들을 순차적으로 작동시켜 한 번에 하나의 센서 값만 받는 방식으로 변경하였다.<li>이외에도 주변 환경에 의한 변수(바닥의 마찰 등), 초음파 센서의 오차 등이 있었다.</ul><p>계획을 구현해내는 과정에서는 고려하지 못했던 이러한 현실적인 변수로 인해 제작에 어려움이 있었고, 원래 계획보다 축소하여 작품을 만들게 되었다. 원래는 더 넓은 공간에서 다양한 상황이 주어졌을 때 주차기능이 작동하도록 하고 싶었으나 위의 문제점들 때문에 주차기능 자체를 오래 유지할 수 없었다. 다음에 개선할 때는 돈이 들고 복잡하더라도 조금 더 견고하게 하드웨어를 구성하고, 엔코더를 이용하는 등의 방식으로 지금보다 더 정밀하게 RC카를 제어해보고 싶다. 또한 아직은 잘 다룰 줄 모르지만 라즈베리 파이도 배워서 수치계산적인 면을 보완하고 더 복잡한 상황에서도 잘 작동하도록 만들고 싶다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/exhibition/'>Exhibition</a>, <a href='/categories/2021%EB%85%84/'>2021년</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/post/" class="post-tag no-text-decoration" >post</a> <a href="/tags/kimseunghwan/" class="post-tag no-text-decoration" >kimseunghwan</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=아두이노 RC카 자동주차 시스템 - Barami&url=https://hyu-barami.github.io/posts/selfparking_car/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=아두이노 RC카 자동주차 시스템 - Barami&u=https://hyu-barami.github.io/posts/selfparking_car/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=아두이노 RC카 자동주차 시스템 - Barami&url=https://hyu-barami.github.io/posts/selfparking_car/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/portable_braille_voice_translator/">휴대용 점자 음성 번역기</a><li><a href="/posts/GPS-L1-MSA/">빔폭 향상을 위한 모드합성 안테나</a><li><a href="/posts/endurance_drone/">곤충 시각 기관 모방 센서와 인공신경망을 적용한 실내 드론 시스템</a><li><a href="/posts/pythongame/">Pythongame</a><li><a href="/posts/Detachable-lost-and-found-system/">탈부착형 분실물 찾기 시스템</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/post/">post</a> <a class="post-tag" href="/tags/shinhyun/">shinhyun</a> <a class="post-tag" href="/tags/hwanghyeonjo/">hwanghyeonjo</a> <a class="post-tag" href="/tags/opencv/">opencv</a> <a class="post-tag" href="/tags/ahndongkun/">ahndongkun</a> <a class="post-tag" href="/tags/ai/">ai</a> <a class="post-tag" href="/tags/analog-circuit/">analog circuit</a> <a class="post-tag" href="/tags/arduino/">arduino</a> <a class="post-tag" href="/tags/arm/">arm</a> <a class="post-tag" href="/tags/blynk/">blynk</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div><div class="custom-panel"><div class="custom-panel-title"> 2021년 바라미 전시회</div><div class="custom-panel-content"> <a href="/categories/2021년"> ❯ 작품 목록 보기</a></div><div class="custom-panel-content"> <a herf="#"> ❯ 방명록 작성하기 (12월 1일 자정부터 링크 열립니다.)</a></div></div><div class="custom-panel"><div class="custom-panel-title"> 바라미 후원하기</div><div class="custom-panel-content"> 신한은행 100-028-832805 바라미</div></div><div class="custom-panel"><div class="custom-panel-title"> 역대 전시회 목록</div><div class="custom-panel-content"> <a href="/categories/2021년"> ❯ 2021년 전시회</a></div><div class="custom-panel-content"> <a href="/categories/2020년"> ❯ 2020년 전시회</a></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/remoteturret/"><div class="card-body"> <span class="timeago small" > Nov 24 <i class="unloaded">2021-11-24T01:17:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>원격 조종 터렛</h3><div class="text-muted small"><p> 원격 조종 터렛 제작 동기 및 작품 요약 이제 막 대학교에 들어오고서 그간 상상만 해봤던 일들을 한번 직접 해보고 싶었다. 그래서 이번에 NetFlix의 ‘Polar’라는 영화에 나온 원격 조종 터렛을 되는데까지 구현해 보았다. 다만, 아는 것이 거의 없었기에, 우선은 유튜브(https://youtu.be/HoRPWUl_sF8)를 참고하여 만들...</p></div></div></a></div><div class="card"> <a href="/posts/predict-snp500/"><div class="card-body"> <span class="timeago small" > Nov 25 <i class="unloaded">2021-11-25T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>뉴스 top25로 S&P500 지수 예측하기</h3><div class="text-muted small"><p> 미국 뉴스 top25로 S&amp;P 500 예측해보기 작품소개 요즘 미국주식이 미쳐 날뛰는 중이다. 전문가들도 예측하기 힘들다는 답변이 대부분이다. 많은 사람들이 전날 뉴스와 같이 필요한 정보를 통해 주가를 예측하고는 한다, 그렇다면 뉴스와 주가와는 관련이 있다고 볼 수 있지 않을까? 에서 시작했다. News data source: https...</p></div></div></a></div><div class="card"> <a href="/posts/camera-calibration/"><div class="card-body"> <span class="timeago small" > Nov 26 <i class="unloaded">2021-11-26T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>카메라 캘리브레이션</h3><div class="text-muted small"><p> 카메라 캘리브레이션 작품개요 기존의 체커보드를 이용하는 카메라 캘리브레이션 라이브러리 보다 간소화된 카메라 캘리브레이션을 수행하는 함수를 구현해본다. https://github.com/ghkddnrwh/camera_calibration 코드실행방법 코드를 실행시키면 다음과 같은 이미지가 뜨게 된다. 1번 클릭 -&gt; 2번 클릭 ...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/pythongame/" class="btn btn-outline-primary"><p>Pythongame</p></a> <a href="/posts/custom_keyboard/" class="btn btn-outline-primary"><p>아두이노 커스텀 키보드</p></a></div><script src="https://utteranc.es/client.js" repo="hyu-barami/hyu-blog-comment" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async> </script></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ibarami">Barami</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/post/">post</a> <a class="post-tag" href="/tags/shinhyun/">shinhyun</a> <a class="post-tag" href="/tags/hwanghyeonjo/">hwanghyeonjo</a> <a class="post-tag" href="/tags/opencv/">opencv</a> <a class="post-tag" href="/tags/ahndongkun/">ahndongkun</a> <a class="post-tag" href="/tags/ai/">ai</a> <a class="post-tag" href="/tags/analog-circuit/">analog circuit</a> <a class="post-tag" href="/tags/arduino/">arduino</a> <a class="post-tag" href="/tags/arm/">arm</a> <a class="post-tag" href="/tags/blynk/">blynk</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://hyu-barami.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>
